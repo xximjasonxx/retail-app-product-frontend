@@ -1,0 +1,17 @@
+
+.product-detail-container {
+    width: 500px;
+}
+
+.product-detail-container > h2 {
+    margin: 0;
+    padding: 0;
+    color: #1E88E5;
+    font-family: Roboto, sans-serif;
+
+    margin-bottom: 5px;
+}
+
+.product-detail-container > .form-container > div {
+    margin-bottom: 10px;
+}
