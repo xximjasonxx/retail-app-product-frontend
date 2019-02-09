@@ -22,7 +22,7 @@ export const validateToken = (action$, store, { http }) => {
             const storedToken = action.payload.tokenReducer.token;
             const headers = { 'Authorization': storedToken };
 
-            return http.get('http://localhost:8081/api/validate', headers)
+            return http.get('http://35.188.28.177/api/validate', headers)
                 .switchMap(({ response }) => {
                     return Observable.concat(
                         Observable.of(tokenActions.addTokenToStateAction(storedToken)),

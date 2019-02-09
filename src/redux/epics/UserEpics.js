@@ -18,7 +18,7 @@ export const authenticateUser = (action$, store, { http }) => {
                 password: action.payload.password
             };
 
-            return http.post('http://localhost:8081/api/login', body)
+            return http.post('http://35.188.28.177/api/login', body)
                 .switchMap(({ response }) => {
                     return Observable.concat(
                         Observable.of(tokenActions.addTokenToStateAction(response.token)),

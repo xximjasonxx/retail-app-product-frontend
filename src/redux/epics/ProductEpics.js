@@ -20,7 +20,7 @@ export const createProduct = (action$, store, { http }) => {
             };
 
             delete action.payload.productData.productId;
-            return http.post('http://localhost:8080/api/product', action.payload.productData, headers)
+            return http.post('http://35.226.37.190/api/product', action.payload.productData, headers)
                 .switchMap(({ response }) => {
                     return Observable.concat(
                         Observable.of(actions.saveProductSuccessAction(response)),
@@ -42,7 +42,7 @@ export const updateProduct = (action$, store, { http }) => {
                 'Authorization': store.getState().tokenReducer.token
             };
 
-            return http.put(`http://localhost:8080/api/product/${productId}`, action.payload, headers)
+            return http.put(`http://35.226.37.190/api/product/${productId}`, action.payload, headers)
                 .switchMap(() => {
                     return Observable.concat(
                         Observable.of(actions.saveProductSuccessAction(action.payload)),
@@ -64,7 +64,7 @@ export const deleteProduct = (action$, store, { http }) => {
                 'Authorization': store.getState().tokenReducer.token
             };
 
-            return http.del(`http://localhost:8080/api/product/${productId}`, headers)
+            return http.del(`http://35.226.37.190/api/product/${productId}`, headers)
                 .switchMap(() => {
                     return Observable.concat(
                         Observable.of(actions.deleteProductSuccess(action.payload)),
@@ -80,7 +80,7 @@ export const deleteProduct = (action$, store, { http }) => {
 export const loadProducts = (action$, store, { http }) => {
     return action$.ofType(actions.LOAD_PRODUCTS_START)
         .switchMap(() => {
-            return http.get('http://localhost:8080/api/products')
+            return http.get('http://35.226.37.190/api/products')
                 .switchMap(({ response }) => {
                     return Observable.of(actions.loadProductsSuccessAction(response));
                 })
